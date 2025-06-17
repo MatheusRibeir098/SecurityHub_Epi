@@ -1,0 +1,47 @@
+        /* Efeito Fade  */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(75px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classes que aplicam as animações */
+.fadeInUp {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.fadeInLeft {
+  animation: fadeInLeft 1.2s ease forwards;
+}
+
+.fadeInRight {
+  animation: fadeInRight 1.3s ease forwards;
+}
+       
