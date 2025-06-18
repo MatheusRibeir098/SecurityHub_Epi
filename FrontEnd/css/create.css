@@ -1,0 +1,32 @@
+.cadastrar-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.cadastrar-h2 {
+    padding: 15px 20px;
+    font-size: 30px;
+    background: linear-gradient(to right, rgb(66, 194, 233), rgb(0, 238, 255));
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.cadastrar-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(3, 15, 180);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+.cadastrar-button:hover {
+    background-color: transparent;
+    color: #000;
+    border: 2px solid rgb(0, 0, 0);
+}
