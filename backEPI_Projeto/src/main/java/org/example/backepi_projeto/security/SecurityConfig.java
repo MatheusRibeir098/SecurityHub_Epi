@@ -30,15 +30,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/login", "/css/**", "/js/**", "/imagem/**", "/particles.js").permitAll()
                         .requestMatchers("/pagina-inicial1").permitAll()
-                        .requestMatchers(
-                                "/pagina-inicial",
-                                "/epis/cadastrar-epis",
-                                "/gerenciar-usuarios",
-                                "/gerenciar-atualizacao",
-                                "/gerenciar-devolucao",
-                                "/epis/**"
-                        ).authenticated()
                         .anyRequest().authenticated()
+
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -62,13 +55,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // REMOVA ESTE MÉTODO userDetailsService() ANTIGO (que usava InMemoryUserDetailsManager), se ainda estiver no seu código:
-    /*
-    @Bean
-    public UserDetailsService userDetailsService() {
-        // ... (código antigo)
-    }
-    */
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
