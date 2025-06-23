@@ -12,6 +12,13 @@ public class HomeController {
         return "pagina-inicial"; // AGORA CORRETO
     }
 
+    @GetMapping("/pagina-inicial1")
+    public String homePage1() {
+        return "pagina-inicial1"; // AGO    RA CORRETO
+    }
+
+
+
     // Serve a página de login
     @GetMapping("/login")
     public String login() {

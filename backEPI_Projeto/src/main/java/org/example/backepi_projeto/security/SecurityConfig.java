@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Mantenha, mas considere habilitar em produção com proteção adequada
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/login", "/css/**", "/js/**", "/imagem/**", "/particles.js").permitAll()
+                        .requestMatchers("/pagina-inicial1").permitAll()
                         .requestMatchers(
                                 "/pagina-inicial",
                                 "/epis/cadastrar-epis",

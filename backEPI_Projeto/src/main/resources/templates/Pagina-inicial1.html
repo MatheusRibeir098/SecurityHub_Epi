@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/pagina-inicial1.css">
+    <link rel="stylesheet" th:href="@{css/pagina-inicial1.css}">
     <title>Pagina Inicial</title>
 </head>
 <body>
      <nav class="navbar">
-        <img class="security" src="../static/imagem/security.png" alt="">
+        <img class="security" th:src="@{imagem/security.png}" alt="">
         <button class="login-btn">
             <i class="fas fa-user"> Login</i>
         </button>
     </nav>
-    <img class="pessoa" src="../static/imagem/pessoa.png" alt="">
+    <img class="pessoa" th:src="@{imagem/pessoa.png}" alt="">
 
     <div class="Texto">
         <h1 class="t"> Sobre Nós</h1>
         <p class="t1">Na SegurityHub, priorizamos a segurança de todos. Fornecemos, cadastramos e controlamos o empréstimo de Equipamentos de Proteção Individual (EPIs), assegurando que cada colaborador tenha o material adequado para trabalhar com segurança e em conformidade com as normas.</p>
-       <a href="pagina-inicial.html"><Button class="b1"  >Cadastrar</Button></a>
+       <a th:href="@{login.html}"><Button class="b1"  >Cadastrar</Button></a>
     </div>
 
     <div class="bola">
