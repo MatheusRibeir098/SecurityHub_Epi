@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #f1f1f7;
+   
+
+}
+
+.navbar {
+    height: 80px;
+    background-color: #EEEEEE; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.navbar:hover {
+    height: 100px;
+    transition: 0.3s;
+}
+
+.login-btn {
+    background-color: #d1cdcd; 
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #b8b7b7
+}
+
+.login-btn i {
+    margin: 0;
+}
+
+.pessoa {
+    width: 39%;
+    padding: 7% 6%;
+    display: absolute;
+    z-index: 2
+
+}
+.security {
+    width: 200px;
+    margin: 85%;
+    
+}
+
+.Texto {
+    position: absolute;
+     top: 35%;
+     left: 50%;
+     width: 40%;
+}
+
+.t {
+     font-size:45px;
+}
+
+.t1 {
+    font-size:28px;
+}
+.b1{
+    font-size:23px;
+    padding: 15px 45px;
+    border-radius: 10px;
+    border: solid 0px rgb(71, 61, 61);
+    background-color: #557ED9;
+    color: #EEEEEE;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.b1:hover {
+    font-size:28px;
+    padding: 20px 55px;
+    transition: 0.5s;
+     background-color: #3969cf;
+
+}

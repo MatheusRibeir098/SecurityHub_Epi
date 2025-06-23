@@ -2,74 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login - SecurityHub EPI</title>
-    <link rel="stylesheet" th:href="@{/css/create.css}">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f2f5;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .login-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .login-container label {
-            display: block;
-            text-align: left;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
-        }
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .login-container button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .login-container button:hover {
-            background-color: #0056b3;
-        }
-        .error-message {
-            color: red;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-        .success-message {
-            color: green;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/pagina-inicial1.css">
+
 </head>
 <body>
+<nav class="navbar">
+        <img class="security" src="../static/imagem/security.png" alt="">
+        <button class="login-btn">
+            <a href="../templates/pagina-inicial.html"><i class="fas fa-user">Voltar</i></a>
+        </button>
+    </nav>
+
+
+    <div class="a" >
     <div class="login-container">
         <h2>Login - SecurityHub EPI</h2>
         <div th:if="${param.error}" class="error-message">
@@ -88,9 +34,10 @@
                 <input type="password" id="password" name="password" />
             </div>
             <div>
-                <button type="submit">Entrar</button>
+                <button class="botao"  type="submit">Entrar</button>
             </div>
         </form>
+    </div>
     </div>
 </body>
 </html>
