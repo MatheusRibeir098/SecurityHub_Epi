@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #739cd3, #3f63da);
+    background-size: 400% 400%;
+    animation: gradient-move 4s ease-in-out infinite;
+    color: #272727;
+    min-height: 100vh;
+}
+
+@keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gerenciador-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+.gerenciador-box h1 {
+    color: #1b1b1b;
+    margin-bottom: 30px;
+}
+
+.botoes-gerenciamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botao-gerenciar {
+    background: #4a6cf7;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.botao-gerenciar:hover {
+    background: #3f5be0;
+    transform: scale(1.03);
+    color: #000;
+}
+
+.seta-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    border-left: 4px solid #555;
+    border-bottom: 4px solid #555;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.seta-voltar:hover {
+    border-color: #000;
+    transform: rotate(45deg) scale(1.2);
+}

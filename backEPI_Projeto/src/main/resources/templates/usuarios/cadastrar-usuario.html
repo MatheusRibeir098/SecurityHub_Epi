@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurityHub</title>
+    <link rel="stylesheet" href="/static/css/cadastro-usuario.css">
+    <link rel="stylesheet" href="/static/css/animacao.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><nav>
+       
+       
+
+</head> 
+<body>
+    
+<section>
+  <div class="container">
+
+    <section class="card-cadastro fadeInUp">
+
+     <a href="/templates/usuarios/gerenciar-usuario.html" class="voltar-seta" aria-label="Voltar">⮜</a>
+
+
+
+      <h1 class="titulo-cadastro fadeInLeft">Cadastre-se</h1>
+
+      <form id="formCadastro" class="formulario-usuario">
+
+        <div class="campo-formulario">
+          <label for="nome">Nome</label>
+          <input type="text" name="nome" id="nome" required placeholder="Digite seu nome completo" />
+        </div>
+
+        <div class="campo-formulario">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required placeholder="Digite um email válido" />
+        </div>
+
+        <div class="campo-formulario" style="position: relative;">
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="senha" required placeholder="Informe sua senha" />
+          <span id="toggleSenha" class="icone-olho"></span>
+        </div>
+
+        <div class="campo-formulario">
+          <label for="tipo">Tipo</label>
+          <select name="tipo" id="tipo" required>
+            <option value="">Selecione</option>
+            <option value="usuario">Usuário</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <button type="button" id="btnCadastrar" class="btn-submit">Cadastrar</button>
+
+        <div id="mensagem"></div>
+      </form>
+
+    </section>
+  </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/js/cadastro.js"></script>
+</body>
+</html>
