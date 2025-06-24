@@ -19,7 +19,7 @@ public class EpiController {
     }
 
     @PostMapping
-    public EPI salvar(@RequestBody EPI epi) {
+    public EPI salvar(EPI epi) {
         return repository.save(epi);
     }
 }

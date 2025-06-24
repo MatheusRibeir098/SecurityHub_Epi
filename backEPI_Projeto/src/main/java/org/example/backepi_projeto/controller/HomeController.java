@@ -6,48 +6,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-
+import java.util.Optional;
 @Controller
 public class HomeController {
 
     @Autowired
     private EpiRepository epiRepository;
 
-    // Serve a página inicial. O retorno é APENAS "pagina-inicial"
+//----------------- PAGINA INICIAL ----------
     @GetMapping("/pagina-inicial")
     public String homePage() {
-        return "pagina-inicial"; // AGORA CORRETO
+        return "pagina-inicial";
     }
 
     @GetMapping("/pagina-inicial1")
     public String homePage1() {
         return "pagina-inicial1"; // AGO    RA CORRETO
     }
+// -----------------------------------------
 
-    @GetMapping("/epi/listar")
-    public String listarEpis(Model model) {
-        List<EPI> epis = epiRepository.findAll(); // Busca todos os EPIs do banco de dados
-        model.addAttribute("epis", epis); // Adiciona a lista de EPIs ao modelo com o nome "epis"
-        return "epis/lista-epis"; // Retorna o nome do template Thymeleaf
-    }
-
-    // Serve a página de login
+// ------------- PAGINAS LOGIN ----------------
     @GetMapping("/login")
     public String login() {
         return "login"; // JÁ ESTAVA CORRETO
     }
+// ----------------------------------------
 
-    // Serve a página de cadastro de EPIs.
-    // Se cadastrar-epis.html estiver em templates/epis/cadastrar-epis.html
-    @GetMapping("/epis/cadastrar-epis")
-    public String cadastrarEpisPage() {
-        return "epis/cadastrar-epis"; // AGORA CORRETO
+// -------- PAGINAS DE EPI (CRUD) -------------------
+    @GetMapping("/epi/listar")
+    public String listarEpis(Model model) {
+        List<EPI> epis = epiRepository.findAll();
+        model.addAttribute("epis", epis);
+        return "epis/lista-epis";
     }
 
-    // Continue ajustando os outros Controllers que você possa ter:
-    // Por exemplo, se tiver 'templates/usuarios/lista-usuarios.html'
+    @GetMapping("/epis/cadastrar-epis")
+    public String cadastrarEpisPage() {
+        return "epis/cadastrar-epis";
+    }
+
+    @PostMapping("/excluir/{id}")
+    public String excluirEpi(@PathVariable Long id) {
+        Optional<EPI> epiOptional = epiRepository.findById(id);
+        if (epiOptional.isPresent()) {
+            epiRepository.delete(epiOptional.get());
+        }
+
+        return "redirect:/epis/listar";
+    }
+
+// -----------------------------------
+
     @GetMapping("/usuarios/lista-usuarios")
     public String listarUsuarios() {
         return "usuarios/lista-usuarios";

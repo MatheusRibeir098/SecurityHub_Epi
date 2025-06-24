@@ -1,12 +1,12 @@
 package org.example.backepi_projeto.security;
 
-import org.example.backepi_projeto.service.JpaUserDetailsService; // Importe seu serviço
+import org.example.backepi_projeto.service.JpaUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // Importe o PasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder; // Importe o PasswordEncoder
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -16,9 +16,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final JpaUserDetailsService jpaUserDetailsService; // Injeção do seu UserDetailsService personalizado
+    private final JpaUserDetailsService jpaUserDetailsService;
 
-    // Construtor para injetar o JpaUserDetailsService
     public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
@@ -26,13 +25,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Mantenha, mas considere habilitar em produção com proteção adequada
+                .csrf(csrf -> csrf.disable()) // Atenção: csrf().disable() não é recomendado para produção por questões de segurança
                 .authorizeHttpRequests(authorize -> authorize
+                        // Permissões públicas e recursos estáticos primeiro
                         .requestMatchers("/login", "/css/**", "/js/**", "/imagem/**", "/particles.js").permitAll()
                         .requestMatchers("/pagina-inicial1").permitAll()
-                        .anyRequest().authenticated()
 
+                        // REGRAS ESPECÍFICAS DE AUTORIZAÇÃO (ANTES DO anyRequest())
+                        // O endpoint de exclusão (POST) exige ROLE_ADMIN
+                        .requestMatchers("/epis/excluir/**").hasRole("ADMIN")
+                        // Se o cadastro também for só para ADMIN
+                        .requestMatchers("/epis/cadastrar-epis").hasRole("ADMIN")
+                        // Se listar for para qualquer usuário autenticado
+                        .requestMatchers("/epis/listar").authenticated()
+
+                        // QUALQUER OUTRA REQUISIÇÃO (após as específicas), exige autenticação
+                        .anyRequest().authenticated()
                 )
+                .userDetailsService(jpaUserDetailsService) // Adicionei esta linha para garantir que seu UserDetailsService está sendo usado
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/pagina-inicial", true)
@@ -49,12 +59,10 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // Configura o PasswordEncoder (BCrypt é o mais recomendado)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

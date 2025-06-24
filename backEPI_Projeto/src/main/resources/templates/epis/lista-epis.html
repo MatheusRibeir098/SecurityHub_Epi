@@ -30,7 +30,8 @@
             <th>ID</th>
             <th>Nome do EPI</th>
             <th>Quantidade</th>
-            <th>Ações</th> </tr>
+            <th>Ações</th>
+        </tr>
         </thead>
         <tbody>
         <tr th:each="epi : ${epis}">
@@ -39,7 +40,13 @@
             <td th:text="${epi.quantidade}">100</td>
             <td>
                 <a th:href="@{/epis/editar/{id}(id=${epi.id})}" class="btn btn-small">Editar</a>
-                <a th:href="@{/epis/excluir/{id}(id=${epi.id})}" class="btn btn-small btn-danger">Excluir</a>
+
+                <form th:action="@{/epis/excluir/{id}(id=${epi.id})}" method="post" class="action-form">
+                    <button type="submit" class="btn btn-small btn-danger"
+                            onclick="return confirm('Tem certeza que deseja excluir este EPI?');">
+                        Excluir
+                    </button>
+                </form>
             </td>
         </tr>
         <tr th:if="${#lists.isEmpty(epis)}">
