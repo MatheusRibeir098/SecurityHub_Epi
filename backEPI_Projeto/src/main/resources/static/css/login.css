@@ -10,7 +10,7 @@
 
 .login-container {
     background-color: #ffffff;
-    padding: 30px 40px;
+    padding: 70px 40px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     width: 350px;
@@ -20,7 +20,7 @@
 .login-container h2 {
     text-align: center;
     color: #333333;
-    margin-bottom: 25px;
+    margin-bottom: 55px;
 }
 
 .login-container label {
