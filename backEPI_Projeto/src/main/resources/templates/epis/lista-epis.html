@@ -6,69 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de EPIs - SecurityHub EPI</title>
     <link rel="stylesheet" th:href="@{/css/pagina-inicial.css}">
-    <link rel="stylesheet" th:href="@{/css/create.css}"> <style>
-    /* Estilos adicionais para a tabela, se necessário */
-    table {
-        width: 80%;
-        border-collapse: collapse;
-        margin: 20px auto;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    .container-lista {
-        text-align: center;
-        padding: 20px;
-    }
-    .container-lista h2 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-    .btn {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-        margin-top: 10px;
-        display: inline-block;
-    }
-    .btn:hover {
-        background-color: #0056b3;
-    }
-</style>
+    <link rel="stylesheet" th:href="@{/css/create.css}">
+    <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/lista.epi.css">
+    
 </head>
 <body>
-<header>
-    <div class="logo">SecurityHub EPI</div>
-    <nav>
-        <ul>
-            <li><a th:href="@{/pagina-inicial}">Página Inicial</a></li>
-            <li><a th:href="@{/epis/cadastrar-epis}">Cadastrar EPI</a></li>
-            <li><a th:href="@{/epis/listar}">Listar EPIs</a></li>
-            <li>
-                <form th:action="@{/logout}" method="post" style="display:inline;">
-                    <input type="submit" value="Sair" class="btn-logout">
-                </form>
-            </li>
-        </ul>
-    </nav>
-</header>
-
 <div class="container-lista">
     <h2>EPIs Cadastrados</h2>
 
     <a th:href="@{/epis/cadastrar-epis}" class="btn">Cadastrar Novo EPI</a>
 
+
+
+    <nav class="navbar">
+        <img class="security" th:src="@{imagem/security.png}" alt="">
+        <button class="login-btn">
+           <a th:href="@{login.html}"> <i class="fas fa-user"> Login</i> </a>
+        </button>
+    </nav>
     <table>
         <thead>
         <tr>
@@ -94,8 +49,5 @@
     </table>
 </div>
 
-<footer>
-    <p>&copy; 2025 SecurityHub EPI. Todos os direitos reservados.</p>
-</footer>
 </body>
 </html>

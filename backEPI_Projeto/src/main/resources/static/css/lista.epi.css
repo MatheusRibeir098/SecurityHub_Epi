@@ -1,0 +1,99 @@
+body {
+    background: linear-gradient(135deg, #739cd3, #3f63da);
+    font-family: Arial, sans-serif;
+}
+
+
+
+.container-lista {
+    text-align: center;
+    padding: 40px 20px;
+
+    min-height: 100vh;
+    color: #000000;
+}
+
+
+.container-lista h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Botão principal */
+.btn {
+    background-color: #ffffff;
+    color: #4a6cf7;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c5c4c4;
+    color: #000000;
+}
+
+/* Tabela de dados */
+table {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho da tabela */
+table thead {
+    background-color: #8193db;
+    color: #ffffff;
+}
+
+table th, table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Última linha da tabela */
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Botões de ação */
+.btn-small {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-right: 6px;
+    background-color: #4a6cf7;
+    color: white;
+}
+
+.btn-small:hover {
+    background-color: #3f5be0;
+}
+
+/* Botão de excluir */
+.btn-danger {
+    background-color: #f44336;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+/* Linha vazia */
+table td[colspan="4"] {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+}
