@@ -1,10 +1,19 @@
 package org.example.backepi_projeto.controller;
 
+import org.example.backepi_projeto.model.EPI;
+import org.example.backepi_projeto.repository.EpiRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private EpiRepository epiRepository;
 
     // Serve a página inicial. O retorno é APENAS "pagina-inicial"
     @GetMapping("/pagina-inicial")
@@ -17,7 +26,12 @@ public class HomeController {
         return "pagina-inicial1"; // AGO    RA CORRETO
     }
 
-
+    @GetMapping("/epi/listar")
+    public String listarEpis(Model model) {
+        List<EPI> epis = epiRepository.findAll(); // Busca todos os EPIs do banco de dados
+        model.addAttribute("epis", epis); // Adiciona a lista de EPIs ao modelo com o nome "epis"
+        return "epis/lista-epis"; // Retorna o nome do template Thymeleaf
+    }
 
     // Serve a página de login
     @GetMapping("/login")

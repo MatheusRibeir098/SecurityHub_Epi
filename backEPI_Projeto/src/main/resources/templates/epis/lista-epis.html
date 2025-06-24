@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de EPIs - SecurityHub EPI</title>
+    <link rel="stylesheet" th:href="@{/css/pagina-inicial.css}">
+    <link rel="stylesheet" th:href="@{/css/create.css}"> <style>
+    /* Estilos adicionais para a tabela, se necessário */
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .container-lista {
+        text-align: center;
+        padding: 20px;
+    }
+    .container-lista h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 10px;
+        display: inline-block;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="logo">SecurityHub EPI</div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/pagina-inicial}">Página Inicial</a></li>
+            <li><a th:href="@{/epis/cadastrar-epis}">Cadastrar EPI</a></li>
+            <li><a th:href="@{/epis/listar}">Listar EPIs</a></li>
+            <li>
+                <form th:action="@{/logout}" method="post" style="display:inline;">
+                    <input type="submit" value="Sair" class="btn-logout">
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-lista">
+    <h2>EPIs Cadastrados</h2>
+
+    <a th:href="@{/epis/cadastrar-epis}" class="btn">Cadastrar Novo EPI</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome do EPI</th>
+            <th>Quantidade</th>
+            <th>Ações</th> </tr>
+        </thead>
+        <tbody>
+        <tr th:each="epi : ${epis}">
+            <td th:text="${epi.id}">1</td>
+            <td th:text="${epi.nome}">Capacete de Segurança</td>
+            <td th:text="${epi.quantidade}">100</td>
+            <td>
+                <a th:href="@{/epis/editar/{id}(id=${epi.id})}" class="btn btn-small">Editar</a>
+                <a th:href="@{/epis/excluir/{id}(id=${epi.id})}" class="btn btn-small btn-danger">Excluir</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(epis)}">
+            <td colspan="4">Nenhum EPI cadastrado.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2025 SecurityHub EPI. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>
