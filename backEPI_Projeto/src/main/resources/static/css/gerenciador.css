@@ -1,25 +1,38 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #739cd3, #3f63da);
-    background-size: 400% 400%;
-    animation: gradient-move 4s ease-in-out infinite;
-    color: #272727;
-    min-height: 100vh;
-}
 
-@keyframes gradient-move {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 
 .container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px; 
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+}
+
+.navbar {
+    height: 80px;
+    background-color: #EEEEEE; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border-bottom: solid 5px rgba(59, 58, 58, 0.062);
+    
+}
+.navbar:hover {
+    height: 90px;
+    transition: 0.3s;
 }
 
 .gerenciador-box {
@@ -27,27 +40,28 @@ body {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    max-width: 400px;
-    width: 90%;
+    max-width: 450px;
+    width: 100%;
     text-align: center;
     position: relative;
+    top: -100px;
 }
 
 .gerenciador-box h1 {
-    color: #1b1b1b;
-    margin-bottom: 30px;
+    color: #4a6cf7;
+    margin-bottom: 60px;
 }
 
 .botoes-gerenciamento {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 17px;
 }
 
 .botao-gerenciar {
     background: #4a6cf7;
     color: white;
-    padding: 12px;
+    padding: 20px;
     border: none;
     border-radius: 10px;
     text-decoration: none;
@@ -63,18 +77,15 @@ body {
 
 .seta-voltar {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 24px;
-    height: 24px;
-    border-left: 4px solid #555;
-    border-bottom: 4px solid #555;
-    transform: rotate(45deg);
-    cursor: pointer;
-    transition: border-color 0.3s, transform 0.3s;
+  top: 52px;
+  left: 15px;
+  font-size: 35px;
+  color: #3d3d3d;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .seta-voltar:hover {
-    border-color: #000;
-    transform: rotate(45deg) scale(1.2);
+    color: #000;
+  transform: scale(1.2);
 }
