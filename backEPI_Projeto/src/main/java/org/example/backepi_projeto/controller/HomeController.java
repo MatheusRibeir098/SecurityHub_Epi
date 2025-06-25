@@ -1,7 +1,7 @@
 package org.example.backepi_projeto.controller;
 
-import org.example.backepi_projeto.model.EPI;
-import org.example.backepi_projeto.repository.EpiRepository;
+import org.example.backepi_projeto.model.EPI; // Pode remover esta importação se não for mais usada
+import org.example.backepi_projeto.repository.EpiRepository; // Pode remover esta importação se não for mais usada
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-import java.util.Optional;
 @Controller
 public class HomeController {
 
     @Autowired
-    private EpiRepository epiRepository;
+    private EpiRepository epiRepository; // Se não for mais usado para EPI, pode remover, mas pode ser usado para outras coisas
 
-//----------------- PAGINA INICIAL ----------
+    //----------------- PAGINA INICIAL ----------
     @GetMapping("/pagina-inicial")
     public String homePage() {
         return "pagina-inicial";
@@ -26,11 +24,11 @@ public class HomeController {
 
     @GetMapping("/pagina-inicial1")
     public String homePage1() {
-        return "pagina-inicial1"; // AGO    RA CORRETO
+        return "pagina-inicial1"; // AGORA CORRETO
     }
 // -----------------------------------------
 
-// ------------- PAGINAS LOGIN ----------------
+    // ------------- PAGINAS LOGIN ----------------
     @GetMapping("/login")
     public String login() {
         return "login"; // JÁ ESTAVA CORRETO
@@ -38,49 +36,7 @@ public class HomeController {
 // ----------------------------------------
 
 // -------- PAGINAS DE EPI (CRUD) -------------------
-    @GetMapping("/epi/listar")
-    public String listarEpis(Model model) {
-        List<EPI> epis = epiRepository.findAll();
-        model.addAttribute("epis", epis);
-        return "epis/lista-epis";
-    }
-
-    @GetMapping("/epis/cadastrar-epis")
-    public String cadastrarEpisPage() {
-        return "epis/cadastrar-epis";
-    }
-
-    @PostMapping("/epis/excluir/{id}") // <<<< AQUI É A MUDANÇA
-    public String excluirEpi(@PathVariable Long id) {
-        Optional<EPI> epiOptional = epiRepository.findById(id);
-        if (epiOptional.isPresent()) {
-            epiRepository.delete(epiOptional.get());
-        }
-        return "redirect:/epi/listar"; // Redireciona para a lista de EPIs
-    }
-
+    // OS MÉTODOS DE EPI FORAM REMOVIDOS DAQUI E MOVIDOS PARA EpiController.java
 // -----------------------------------
 
-    @GetMapping("/usuarios/cadastrar")
-    public String CadastrarUsuarios() {
-        return "usuarios/cadastrar-usuario";
-    }
-
-    @GetMapping("/usuarios/lista-usuarios")
-    public String listarUsuarios() {
-        return "usuarios/lista-usuarios";
-    }
-
-    // Ajuste para outras pastas conforme sua estrutura (devolucao, emprestimo)
-    // Ex: templates/devolucao/lista-devolucao.html
-    @GetMapping("/devolucao/lista-devolucao")
-    public String listarDevolucao() {
-        return "devolucao/lista-devolucao";
-    }
-
-    // Ex: templates/emprestimo/lista-emprestimo.html
-    @GetMapping("/emprestimo/lista-emprestimo")
-    public String listarEmprestimo() {
-        return "emprestimo/lista-emprestimo";
-    }
 }
