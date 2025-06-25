@@ -50,14 +50,13 @@ public class HomeController {
         return "epis/cadastrar-epis";
     }
 
-    @PostMapping("/excluir/{id}")
+    @PostMapping("/epis/excluir/{id}") // <<<< AQUI É A MUDANÇA
     public String excluirEpi(@PathVariable Long id) {
         Optional<EPI> epiOptional = epiRepository.findById(id);
         if (epiOptional.isPresent()) {
             epiRepository.delete(epiOptional.get());
         }
-
-        return "redirect:/epis/listar";
+        return "redirect:/epi/listar"; // Redireciona para a lista de EPIs
     }
 
 // -----------------------------------
