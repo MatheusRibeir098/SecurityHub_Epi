@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciar Usuários</title>
+  <link rel="stylesheet" href="/static/css/gerenciador.css" />
+  <link rel="stylesheet" href="/static/css/cadastro-epi.css" />
+  <link rel="stylesheet" href="/static/css/pagina-inicial1.css" />
+
+
+
+</head>
+<body>
+  <nav class="navbar">
+        <img class="security" src="/static/imagem/security.png" alt="">
+        <button class="login-btn">
+            <a th:href="@{/gerenciadores}"><i class="fas fa-user">Voltar</i></a>
+        </button>
+    </nav>
+  <div class="container">
+    <div class="gerenciador-box">
+      <div class="seta-voltar" onclick="history.back()" title="Voltar">⮜</div>
+      <h1>Gerenciador de EPIS</h1>
+
+      <div class="botoes-gerenciamento">
+        <a href="cadastrar-epis.html" class="botao-gerenciar">Cadastrar EPIS</a>
+        <a href="lista-epis.html" class="botao-gerenciar">Listar EPIS</a>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>
