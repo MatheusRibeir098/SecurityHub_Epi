@@ -8,9 +8,18 @@
     <link rel="stylesheet" th:href="@{/css/pagina-inicial.css}">
     <link rel="stylesheet" th:href="@{/css/create.css}">
     <link rel="stylesheet" th:href="@{/css/lista.epi.css}">
-    
+
+
 </head>
 <body>
+
+<nav class="navbar">
+        <img class="security" th:src="@{/imagem/security.png}" alt="">
+        <button class="login-btn">
+           <a th:href="@{login.html}"> <i class="fas fa-user"> Login</i> </a>
+        </button>
+    </nav>
+
 <div class="container-lista">
     <h2>EPIs Cadastrados</h2>
 
@@ -18,12 +27,7 @@
 
 
 
-    <nav class="navbar">
-        <img class="security" th:src="@{imagem/security.png}" alt="">
-        <button class="login-btn">
-           <a th:href="@{login.html}"> <i class="fas fa-user"> Login</i> </a>
-        </button>
-    </nav>
+  
     <table>
         <thead>
         <tr>
@@ -39,6 +43,7 @@
             <td th:text="${epi.nome}">Capacete de Segurança</td>
             <td th:text="${epi.quantidade}">100</td>
             <td>
+                <div class="btn_container">
                 <a th:href="@{/epis/editar/{id}(id=${epi.id})}" class="btn btn-small">Editar</a>
 
                 <form th:action="@{/epis/excluir/{id}(id=${epi.id})}" method="post" class="action-form">
@@ -46,6 +51,7 @@
                             onclick="return confirm('Tem certeza que deseja excluir este EPI?');">
                         Excluir
                     </button>
+                </div>
                 </form>
             </td>
         </tr>

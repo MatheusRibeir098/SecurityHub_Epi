@@ -68,10 +68,22 @@ button:hover {
     background-color: #3f5be0;
 }
 
-.error-message {
+input[readonly] {
+    background-color: #efefef;
+    color: #888;
+    cursor: not-allowed;
+}
+      .error-message {
           color: red;
           font-size: 12px;
           margin-top: -20px;
           margin-bottom: 15px;
           display: none;
       }
+
+
+      .btn_id {
+    background-color: #d6d4d4 !important; 
+    color: #333; 
+    border: 1px solid #ccc;
+}

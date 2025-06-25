@@ -4,40 +4,79 @@
     <title>Login - SecurityHub EPI</title>
     <link rel="stylesheet" th:href="@{css/login.css}">
     <link rel="stylesheet" th:href="@{css/pagina-inicial1.css}">
- 
+    
+    
+    
 </head>
 <body>
 <nav class="navbar">
-        <img class="security" th:src="@{imagem/security.png}" alt="">
-        <button class="login-btn">
-            <a th:href="@{pagina-inicial1}"><i class="fas fa-user">Voltar</i></a>
-        </button>
-    </nav>
+    <img class="security" th:src="@{imagem/security.png}" alt="">
+    <button class="login-btn">
+        <a th:href="@{gerenciadores}"><i class="fas fa-user">Voltar</i></a>
+    </button>
+</nav>
 
-
-    <div class="a" >
+<div class="a">
     <div class="login-container">
         <h2>Login - SecurityHub EPI</h2>
+
         <div th:if="${param.error}" class="error-message">
             Usuário ou senha inválidos.
         </div>
         <div th:if="${param.logout}" class="success-message">
             Você foi desconectado com sucesso.
         </div>
-        <form th:action="@{/login}" method="post">
+
+        <form id="formLogin" th:action="@{/login}" method="post" novalidate>
             <div>
                 <label for="username">Usuário:</label>
                 <input type="text" id="username" name="username" autofocus="autofocus" />
+                <div id="errorUsername" class="client-error-message">Por favor, preencha um email válido contendo '@'.</div>
             </div>
             <div>
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" />
+                <div id="errorPassword" class="client-error-message">Por favor, preencha a senha.</div>
             </div>
             <div>
-                <button class="botao"  type="submit">Entrar</button>
+                <button class="botao" type="submit">Entrar</button>
             </div>
         </form>
     </div>
-    </div>
+</div>
+
+<script>
+    const form = document.getElementById('formLogin');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const errorUsername = document.getElementById('errorUsername');
+    const errorPassword = document.getElementById('errorPassword');
+
+    form.addEventListener('submit', function(event) {
+        let valid = true;
+
+        const usernameValue = username.value.trim();
+
+        // Verifica se username não está vazio e contém @
+        if (usernameValue === '' || !usernameValue.includes('@')) {
+            errorUsername.style.display = 'block';
+            valid = false;
+        } else {
+            errorUsername.style.display = 'none';
+        }
+
+        if (password.value.trim() === '') {
+            errorPassword.style.display = 'block';
+            valid = false;
+        } else {
+            errorPassword.style.display = 'none';
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
 </body>
 </html>

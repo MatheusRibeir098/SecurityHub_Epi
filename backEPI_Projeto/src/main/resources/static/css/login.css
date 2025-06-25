@@ -84,3 +84,10 @@
     font-size: 14px;
 }
 
+ .client-error-message {
+          color: red;
+          font-size: 12px;
+          margin-top: 4px;
+          margin-bottom: 15px;
+          display: none;
+      }
