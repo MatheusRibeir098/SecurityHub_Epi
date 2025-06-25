@@ -61,6 +61,11 @@ public class HomeController {
 
 // -----------------------------------
 
+    @GetMapping("/usuarios/cadastrar")
+    public String CadastrarUsuarios() {
+        return "usuarios/cadastrar-usuario";
+    }
+
     @GetMapping("/usuarios/lista-usuarios")
     public String listarUsuarios() {
         return "usuarios/lista-usuarios";
