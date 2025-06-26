@@ -19,7 +19,7 @@ public class HomeController {
     //----------------- PAGINA INICIAL ----------
     @GetMapping("/pagina-inicial")
     public String homePage() {
-        return "pagina-inicial";
+        return "gerenciadores";
     }
 
     @GetMapping("/pagina-inicial1")

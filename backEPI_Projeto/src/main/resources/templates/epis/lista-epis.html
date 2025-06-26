@@ -5,9 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de EPIs - SecurityHub EPI</title>
-    <link rel="stylesheet" th:href="@{/css/pagina-inicial.css}">
+    <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+<<<<<<< Updated upstream
     <link rel="stylesheet" th:href="@{/css/create.css}">
+=======
+    
+>>>>>>> Stashed changes
     <link rel="stylesheet" th:href="@{/css/lista.epi.css}">
+
+     <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/lista.epi.css">
+    <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/pagina-inicial1.css">
+
+
 
 
 </head>
@@ -16,7 +25,11 @@
 <nav class="navbar">
         <img class="security" th:src="@{/imagem/security.png}" alt="">
         <button class="login-btn">
-           <a th:href="@{login.html}"> <i class="fas fa-user"> Login</i> </a>
+<<<<<<< Updated upstream
+           <a th:href="@{gerenciador.html}"> <i class="fas fa-user"> Voltar</i> </a>
+=======
+           <a th:href="@{gerenciador-epi.html}"> <i class="fas fa-user"> Voltar</i> </a>
+>>>>>>> Stashed changes
         </button>
     </nav>
 
@@ -26,8 +39,6 @@
     <a th:href="@{/epis/cadastrar-epis}" class="btn">Cadastrar Novo EPI</a>
 
 
-
-  
     <table>
         <thead>
         <tr>
@@ -44,7 +55,7 @@
             <td th:text="${epi.quantidade}">100</td>
             <td>
                 <div class="btn_container">
-                <a th:href="@{/epis/editar/{id}(id=${epi.id})}" class="btn btn-small">Editar</a>
+                <a th:href="@{/epis/atualizar-epis/{id}(id=${epi.id})}" class="btn btn-small">Editar</a>
 
                 <form th:action="@{/epis/excluir/{id}(id=${epi.id})}" method="post" class="action-form">
                     <button type="submit" class="btn btn-small btn-danger"

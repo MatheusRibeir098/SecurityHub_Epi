@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"> <head>
     <meta charset="UTF-8">
     <title>Editar EPI</title>
+<<<<<<< Updated upstream
+    <link rel="stylesheet" th:href="@{/css/cadastro-epi.css}"> <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+    <style>
+
+    </style>
+=======
     <link rel="stylesheet" th href="@{/css/cadastro-epi.css}">
     <link rel="stylesheet" href="@{/css/pagina-inicial1.css}">
-    <style>
-      
-    </style>
+
+            <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/cadastro-epi.css">
+        <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/pagina-inicial1.css">
+    
+   
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -15,33 +23,28 @@
 <nav class="navbar">
     <img class="security" th:src="@{/imagem/security.png}" alt="">
     <button class="login-btn">
-        <a th:href="@{/pagina-inicial1}"><i class="fas fa-user">Voltar</i></a>
+        <a th:href="@{gerenciador-epi}"><i class="fas fa-user">Voltar</i></a>
     </button>
 </nav>
 
 <div class="b">
     <div class="form-container">
-        <form id="formEPI" action="/epis" method="post" novalidate>
+        <form id="formEPI" th:action="@{/epis}" th:object="${epi}" method="post" novalidate>
             <h2>Editar EPI</h2>
 
             <label for="id">ID:</label>
-            <input class="btn_id" type="text" id="id" name="id" th:value="${epi.id}" readonly>
+            <input class="btn_id" type="text" id="id" th:field="*{id}" readonly>
 
             <label for="nome">Nome do EPI:</label>
-            <input type="text" id="nome" name="nome" required>
-            <div id="errorNome" class="error-message">Por favor, preencha o nome do EPI.</div>
+            <input type="text" id="nome" th:field="*{nome}" required> <div id="errorNome" class="error-message">Por favor, preencha o nome do EPI.</div>
 
             <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" required min="1" step="1">
-            <div id="errorQuantidade" class="error-message">Por favor, informe uma quantidade válida (maior que 0).</div>
+            <input type="number" id="quantidade" th:field="*{quantidade}" required min="1" step="1"> <div id="errorQuantidade" class="error-message">Por favor, informe uma quantidade válida (maior que 0).</div>
 
             <button type="submit">Editar</button>
         </form>
     </div>
 </div>
-
-
-
 
 <script>
     const form = document.getElementById('formEPI');
@@ -53,7 +56,6 @@
     form.addEventListener('submit', function(event) {
         let valid = true;
 
-        
         if (nome.value.trim() === '') {
             errorNome.style.display = 'block';
             valid = false;
@@ -69,7 +71,7 @@
         }
 
         if (!valid) {
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
 </script>
