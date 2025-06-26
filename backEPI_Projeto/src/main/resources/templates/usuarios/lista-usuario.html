@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SecurityHub</title>
   <link rel="stylesheet" href="/static/css/pagina-inicial1.css">
-  <link rel="stylesheet" href="/static/css/lista.epi.css">
+  <link rel="stylesheet" href="/static/css/lista-usuario.css">
+  <link rel="shortcut icon" href="/static/imagem/icone-security.png" type="image/png" />
 
     
 </head>
@@ -37,14 +38,16 @@
           <td>joao@email.com</td>
           <td>••••••••</td>
           <td>
-            <a href="/usuarios/editar/1.html" class="btn btn-small">Editar</a>
-            <form action="/usuarios/excluir/1" method="post" class="action-form">
-              <button type="submit" class="btn btn-small btn-danger"
-                onclick="return confirm('Tem certeza que deseja excluir este usuário?');">
-                Excluir
-              </button>
-            </form>
-          </td>
+    <div class="btn_container">
+        <a href="/templates/usuarios/atualizar-usuario.html" class="btn btn-small">Editar</a>
+
+        <form action="/epis/excluir/1" method="post" class="action-form">
+  <button type="submit" class="btn btn-small btn-danger btn-excluir">Excluir</button>
+</form>
+
+    </div>
+</td>
+
         </tr>
         <tr>
           <td colspan="5">Nenhum usuário cadastrado.</td>
@@ -52,5 +55,39 @@
       </tbody>
     </table>
   </div>
+
+ 
+
+  <div id="confirmModal" class="modal">
+  <div class="modal-content">
+    <p>Tem certeza que deseja excluir este EPI?</p>
+    <div class="modal-buttons">
+      <button id="confirmYes">Sim</button>
+      <button id="confirmNo">Cancelar</button>
+    </div>
+  </div>
+</div>  
+<script>
+  document.querySelectorAll('.btn-excluir').forEach(btn => {
+    btn.addEventListener('click', function (event) {
+      event.preventDefault();
+      const form = this.closest('form');
+      const modal = document.getElementById('confirmModal');
+
+      modal.style.display = 'block';
+
+      document.getElementById('confirmYes').onclick = function () {
+        modal.style.display = 'none';
+        form.submit();
+      };
+
+      document.getElementById('confirmNo').onclick = function () {
+        modal.style.display = 'none';
+      };
+    });
+  });
+</script>
+
+
 </body>
 </html>

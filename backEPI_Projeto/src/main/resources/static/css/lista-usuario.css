@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #739cd3, #3f63da);
+}
+
+.login-btn {
+    background-color: #4a6cf7;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #3f5be0;
+}
+
+.security {
+    width: 200px;
+    margin: 85%;
+}
+
+table {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color: #6777b6;
+    color: #ffffff;
+}
+
+table th,
+table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table td[colspan="5"] {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+}
+
+.btn {
+    background-color: #ffffff;
+    color: #4a6cf7;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c6ddeb;
+    color: #000000;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 13px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-small:hover {
+    background-color: #3f5be0;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.btn_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
