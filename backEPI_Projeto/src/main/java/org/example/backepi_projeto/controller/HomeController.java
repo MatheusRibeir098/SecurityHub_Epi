@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @Autowired
-    private EpiRepository epiRepository; // Se não for mais usado para EPI, pode remover, mas pode ser usado para outras coisas
+    private EpiRepository epiRepository;
 
     //----------------- PAGINA INICIAL ----------
     @GetMapping("/pagina-inicial")
@@ -25,6 +25,11 @@ public class HomeController {
     @GetMapping("/pagina-inicial1")
     public String homePage1() {
         return "pagina-inicial1"; // AGORA CORRETO
+    }
+
+    @GetMapping("/gerenciador-usuario")
+    public String GerenciadorUsuario() {
+        return "/usuarios/gerenciar-usuario"; // AGORA CORRETO
     }
 // -----------------------------------------
 
