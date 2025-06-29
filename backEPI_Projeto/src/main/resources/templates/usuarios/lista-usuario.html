@@ -1,92 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SecurityHub</title>
-  <link rel="stylesheet" href="/static/css/pagina-inicial1.css">
-  <link rel="stylesheet" href="/static/css/lista-usuario.css">
-  <link rel="shortcut icon" href="/static/imagem/icone-security.png" type="image/png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SecurityHub</title>
+    <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+    <link rel="stylesheet" th:href="@{/css/lista-usuario.css}">
+    <link rel="shortcut icon" th:href="@{/imagem/icone-security.png}" type="image/png" />
 
-    
 </head>
 <body  class="pagina-lista">
 
-  
-    <nav class="navbar">
-      <img class="security" src="/static/imagem/security.png" alt="Security Logo">
-      <button class="login-btn">
-        <a href="/templates/usuarios/gerenciar-usuario.html">Voltar</a>
-      </button>
-    </nav>
-    
 
-    <table>
-        
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome do Usuário</th> 
-          <th>Email</th>
-          <th>Senha</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>João da Silva</td>
-          <td>joao@email.com</td>
-          <td>••••••••</td>
-          <td>
-    <div class="btn_container">
-        <a href="/templates/usuarios/atualizar-usuario.html" class="btn btn-small">Editar</a>
+<nav class="navbar">
+    <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
+    <button class="login-btn">
+        <a th:href="@{/gerenciador-usuario}">Voltar</a>
+    </button>
+</nav>
 
-        <form action="/epis/excluir/1" method="post" class="action-form">
-  <button type="submit" class="btn btn-small btn-danger btn-excluir">Excluir</button>
-</form>
 
+<table>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome do Usuário</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.nome}">João da Silva</td>
+        <td th:text="${user.username}">joao@email.com</td>
+        <td>
+            <div class="btn_container">
+                <a th:href="@{/usuarios/atualizar/{id}(id=${user.id})}" class="btn btn-small">Editar</a>
+                <form th:action="@{/usuarios/excluir/{id}(id=${user.id})}" method="post" class="action-form">
+                    <button type="submit" class="btn btn-small btn-danger btn-excluir">Excluir</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(users)}">
+        <td colspan="4">Nenhum usuário cadastrado.</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <p>Tem certeza que deseja excluir este usuário?</p>
+        <div class="modal-buttons">
+            <button id="confirmYes">Sim</button>
+            <button id="confirmNo">Cancelar</button>
+        </div>
     </div>
-</td>
-
-        </tr>
-        <tr>
-          <td colspan="5">Nenhum usuário cadastrado.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
- 
-
-  <div id="confirmModal" class="modal">
-  <div class="modal-content">
-    <p>Tem certeza que deseja excluir este EPI?</p>
-    <div class="modal-buttons">
-      <button id="confirmYes">Sim</button>
-      <button id="confirmNo">Cancelar</button>
-    </div>
-  </div>
-</div>  
+</div>
 <script>
-  document.querySelectorAll('.btn-excluir').forEach(btn => {
-    btn.addEventListener('click', function (event) {
-      event.preventDefault();
-      const form = this.closest('form');
-      const modal = document.getElementById('confirmModal');
+    document.querySelectorAll('.btn-excluir').forEach(btn => {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            const form = this.closest('form');
+            const modal = document.getElementById('confirmModal');
 
-      modal.style.display = 'block';
+            modal.style.display = 'block';
 
-      document.getElementById('confirmYes').onclick = function () {
-        modal.style.display = 'none';
-        form.submit();
-      };
+            document.getElementById('confirmYes').onclick = function () {
+                modal.style.display = 'none';
+                form.submit();
+            };
 
-      document.getElementById('confirmNo').onclick = function () {
-        modal.style.display = 'none';
-      };
+            document.getElementById('confirmNo').onclick = function () {
+                modal.style.display = 'none';
+            };
+        });
     });
-  });
 </script>
 
 

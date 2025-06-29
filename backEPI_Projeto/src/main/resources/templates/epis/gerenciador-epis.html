@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciar Usuários</title>
+  <link rel="stylesheet" th:href="@{/css/gerenciador.css}" />
+  <link rel="stylesheet" th:href="@{/css/cadastro-epi.css}" />
+  <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}" />
+
+</head>
+<body>
+<nav class="navbar">
+  <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
+  <button class="login-btn">
+    <a th:href="@{/gerenciadores}"><i class="fas fa-user">Voltar</i></a>
+  </button>
+</nav>
+<div class="container">
+  <div class="gerenciador-box">
+    <div class="seta-voltar" onclick="history.back()" title="Voltar">⮜</div>
+    <h1>Gerenciador de EPIS</h1>
+
+    <div class="botoes-gerenciamento">
+      <a th:href="@{/epis/cadastrar-epis}" class="botao-gerenciar">Cadastrar EPIS</a>
+      <a th:href="@{/epis/listar}" class="botao-gerenciar">Listar EPIS</a>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

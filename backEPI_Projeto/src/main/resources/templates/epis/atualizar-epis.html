@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"> <head>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Editar EPI</title>
 
-    <link rel="stylesheet" th href="@{/css/cadastro-epi.css}">
-    <link rel="stylesheet" href="@{/css/pagina-inicial1.css}">
+    <link rel="stylesheet" th:href="@{/css/cadastro-epi.css}">
+    <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
 
-            <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/cadastro-epi.css">
-        <link rel="stylesheet" href="/backEPI_Projeto/src/main/resources/static/css/pagina-inicial1.css">
-    
 </head>
 
 <body>
 
 <nav class="navbar">
-    <img class="security" th:src="@{/imagem/security.png}" alt="">
+    <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
     <button class="login-btn">
-        <a th:href="@{gerenciador-epi}"><i class="fas fa-user">Voltar</i></a>
+        <a th:href="@{/epis/gerenciador-epi}"><i class="fas fa-user">Voltar</i></a>
     </button>
 </nav>
 
@@ -48,7 +46,7 @@
 
     form.addEventListener('submit', function(event) {
         let valid = true;
-
+        // ... (seu código JavaScript de validação permanece o mesmo) ...
         if (nome.value.trim() === '') {
             errorNome.style.display = 'block';
             valid = false;

@@ -1,14 +1,9 @@
 package org.example.backepi_projeto.controller;
 
-import org.example.backepi_projeto.model.EPI; // Pode remover esta importação se não for mais usada
 import org.example.backepi_projeto.repository.EpiRepository; // Pode remover esta importação se não for mais usada
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
@@ -22,14 +17,19 @@ public class HomeController {
         return "gerenciadores";
     }
 
-    @GetMapping("/pagina-inicial1")
+    @GetMapping("/SecurityHub")
     public String homePage1() {
-        return "pagina-inicial1"; // AGORA CORRETO
+        return "Sobre-SecurityHub"; // AGORA CORRETO
     }
 
     @GetMapping("/gerenciador-usuario")
     public String GerenciadorUsuario() {
         return "/usuarios/gerenciar-usuario"; // AGORA CORRETO
+    }
+
+    @GetMapping("/gerenciador-epis")
+    public String GerenciadorEpis() {
+        return "/epis/gerenciador-epis"; // AGORA CORRETO
     }
 // -----------------------------------------
 
