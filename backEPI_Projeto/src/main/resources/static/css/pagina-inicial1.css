@@ -19,15 +19,13 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: 0.3s;
     border-bottom: solid 5px rgba(59, 58, 58, 0.062);
+    z-index: 1000;
     
 }
-.navbar:hover {
-    height: 90px;
-    transition: 0.3s;
-}
+
 
 .login-btn {
-    background-color: #4a6cf7;; 
+    background-color: #4a6cf7;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -42,11 +40,6 @@ body {
 
 .login-btn:hover {
     background-color: #3f5be0;
-    
-}
-
-.login-btn i {
-    margin: 0;
 }
 
 .pessoa {

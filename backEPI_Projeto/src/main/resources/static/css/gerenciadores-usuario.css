@@ -1,0 +1,125 @@
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.logo-box {
+  text-align: center;
+}
+
+.logo-gerenciador {
+  position: relative;
+  top: -40px;
+  width: 170px;
+  max-width: 80%;
+  height: 180px;
+}
+
+.titulo-painel {
+    top: -70px;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #27005e;
+}
+.subtitulo-painel {
+  font-size: 32px;
+  font-weight: bold;
+  display: block; /* Quebra a linha */
+  color: #5441bd; /* Azul destacado */
+  margin-bottom: 5px;
+}
+.setavoltar {
+    position: absolute;
+    top: 45px;
+    left: 15px;
+    font-size: 35px;
+    color: #3d3d3d;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+} 
+.gerenciadores-card {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(75, 0, 251, 0.752) 0px 10px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: -100px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+      /* Epis disponiveis css */
+
+
+
+/* Botão de "Pegar emprestado" */
+.btn-emprestar {
+  background-color: #4a6cf7;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-emprestar:hover {
+  background-color: #3f5be0;
+}
+
+/* Modal de confirmação */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#confirmarSim {
+  background-color: #4caf50;
+  color: white;
+}
+
+#confirmarNao {
+  background-color: #f44336;
+  color: white;
+}

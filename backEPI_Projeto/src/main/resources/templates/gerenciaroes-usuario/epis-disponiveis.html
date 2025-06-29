@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de EPIs - SecurityHub EPI</title>
+
+  <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+  <link rel="stylesheet" th:href="@{/css/lista.epi.css}">
+  <link rel="stylesheet" th:href="@{/css/gerenciaroes-usuario.css}">
+
+</head>
+<body>
+
+<nav class="navbar">
+  <img class="security" th:src="@{/imagem/security.png}" alt="">
+  <button class="login-btn">
+    <a th:href="@{tela-principal.html}"> <i class="fas fa-user"> Voltar</i> </a>
+  </button>
+</nav>
+
+<div class="container-lista">
+  <h2>EPIs Disponíveis</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome do EPI</th>
+        <th>Quantidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="epi : ${epis}">
+        <td th:text="${epi.id}">1</td>
+        <td th:text="${epi.nome}">Capacete de Segurança</td>
+        <td th:text="${epi.quantidade}">100</td>
+        <td>
+          <button class="btn-emprestar" onclick="confirmarEmprestimo('[[${epi.id}]]', '[[${epi.nome}]]')">
+            Pegar emprestado
+          </button>
+        </td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(epis)}">
+        <td colspan="4">Nenhum EPI cadastrado.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div id="modalConfirmacao" class="modal">
+  <div class="modal-content">
+    <p id="textoModal"></p>
+    <div class="modal-buttons">
+      <form id="formEmprestar" th:action="@{/emprestimos/registrar}" method="post">
+        <input type="hidden" name="epiId" id="inputEpiId">
+        <button type="submit" id="confirmarSim">Sim</button>
+      </form>
+      <button type="button" id="confirmarNao">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  function confirmarEmprestimo(id, nome) {
+    const modal = document.getElementById('modalConfirmacao');
+    const texto = document.getElementById('textoModal');
+    const input = document.getElementById('inputEpiId');
+
+    texto.innerText = `Tem certeza que deseja pegar "${nome}" emprestado?`;
+    input.value = id;
+    modal.style.display = 'flex';
+
+    document.getElementById('confirmarNao').onclick = function () {
+      modal.style.display = 'none';
+    };
+  }
+</script>
+
+</body>
+</html>
