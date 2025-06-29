@@ -1,8 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #739cd3, #3f63da);
+    margin: 0;
+    padding: 0;
 }
 
+/* Botão "Voltar" */
 .login-btn {
     background-color: #4a6cf7;
     border: none;
@@ -21,13 +24,17 @@ body {
     background-color: #3f5be0;
 }
 
+/* Logo */
 .security {
     width: 200px;
-    margin: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
+/* Tabela */
 table {
-    width: 90%;
+    width: 95%;
     max-width: 1000px;
     margin: 30px auto;
     border-collapse: separate;
@@ -62,6 +69,7 @@ table td[colspan="5"] {
     color: #555;
 }
 
+/* Botões */
 .btn {
     background-color: #ffffff;
     color: #4a6cf7;
@@ -106,4 +114,69 @@ table td[colspan="5"] {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .login-btn {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+    table th, table td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .btn_container {
+        flex-direction: column;
+    }
+
+    .security {
+        width: 150px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 12px;
+        width: 98%;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border: none;
+        font-size: 14px;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+    }
+
+    .btn_container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
 }
