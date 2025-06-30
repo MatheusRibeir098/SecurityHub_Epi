@@ -6,23 +6,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-@Service // Marca esta classe como um componente de serviço gerenciado pelo Spring
+import java.util.HashSet;
+import java.util.Set;
+
+@Service
 public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    // Injeção de dependência do UserRepository
     public JpaUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Busca o usuário pelo username (que mapeia para o 'email' no seu banco)
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
-        // Como sua entidade User já implementa UserDetails, você pode retorná-la diretamente
-        return user;
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        // ALTERADO: Usando findByUsername para buscar pelo campo 'username' do modelo, que é o email
+        User user = userRepository.findByUsername(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o email: " + email));
+
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
+
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }

@@ -17,6 +17,11 @@ public class HomeController {
         return "gerenciadores";
     }
 
+    @GetMapping("/pagina-inicial-usuario")
+    public String homePageUsuario() {
+        return "/gerenciadores-usuario/tela-principal-usuario";
+    }
+
     @GetMapping("/SecurityHub")
     public String homePage1() {
         return "Sobre-SecurityHub"; // AGORA CORRETO
