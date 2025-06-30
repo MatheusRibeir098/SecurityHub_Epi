@@ -1,71 +1,49 @@
 <!DOCTYPE html> 
-<html lang="pt-br"> 
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"> 
 <head> 
     <meta charset="UTF-8"> 
     <title>Security Hub</title> 
 
-    <link rel="shortcut icon" href="/static/imagem/icone-security.png" type="image/png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/imagem/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/imagem/favicon-16x16.png}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/imagem/apple-touch-icon.png}">
+    <link rel="shortcut icon" th:href="@{/imagem/favicon.ico}" type="image/x-icon">
+    <link rel="manifest" th:href="@{/imagem/site.webmanifest}">
+
+    <!-- CSS -->
     <link rel="stylesheet" th:href="@{/css/pagina-inicial.css}">
     <link rel="stylesheet" th:href="@{/css/animacao.css}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <nav>
-       
-        <div class="navbar navbar-expand-lg navbar-light bg-light">
-
-            <div class="container-fluid">
-                <div class="container">
-
-                <a class="navbar-brand" href="#">Security Hub</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/templates/usuarios/gerenciar-usuario.html">Usuários</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="gerenciador-epi" href="epis.html">EPIs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="atualizacao.html">Atualizações</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cadastro-epi.html">Devoluções</a>
-                        </li>
-                        </div>
-    </nav>
-
+    <link rel="stylesheet" th:href="@{/css/lista-usuario.css}">
 </head> 
-<body>
-    
 
-    <div class="container">
-        <div id="particles-js"></div>
-        <section class="page-inicial fadeInUp">
-    <h1 class="fadeInLeft text-black">Bem-vindo ao <h1>Security Hub</h1></h1>
-    <p class="fadeInRight">Gerencie seus EPIs de forma eficiente e segura.</p>
-    
-   <div class="coluna-botoes fadeInUp">
-  <a href="gerenciador-usuario" class="button fadeInLeft">Gerenciar Usuário</a>
-  <a href="gerenciador-epis" class="button fadeInRight">Gerenciar EPIs</a>
-  <a href="atualizacao.html" class="button fadeInLeft">Gerenciar Atualização</a> 
-  <a href="cadastro-epi.html" class="button fadeInRight">Gerenciar Devolução</a> 
+<body>
+
+<nav class="navbar">
+    <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
+    <button class="login-btn">
+        <a th:href="@{/login}">Voltar</a>
+    </button>
+</nav>
+
+<div class="container">
+    <div id="particles-js"></div>
+    <section class="page-inicial fadeInUp">
+        <h1 class="fadeInLeft text-black">Bem-vindo ao</h1>
+        <h1>Security Hub</h1>
+        <p class="fadeInRight">Gerencie seus EPIs de forma eficiente e segura.</p>
+        
+        <div class="coluna-botoes fadeInUp">
+            <a th:href="@{/usuarios/gerenciar}" class="buttonn fadeInLeft">Gerenciar Usuário</a>
+            <a th:href="@{/epis/gerenciar}" class="buttonn fadeInRight">Gerenciar EPIs</a>
+        </div>
+    </section>
 </div>
 
-</section>
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/particles.js}"></script>
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <script th:src="@{js/particles.js}"></script>
 </body> 
 </html>
