@@ -6,7 +6,45 @@
 
     <link rel="stylesheet" th:href="@{/css/cadastro-epi.css}">
     <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+    
 
+    <style>
+        .lock-icon {
+            width: 16px;
+            height: 16px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23888" viewBox="0 0 24 24"%3E%3Cpath d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 8v2h2v-2a2 2 0 0 0-2-2 2 2 0 0 0-2 2zM9 8V6a3 3 0 1 1 6 0v2H9z"/%3E%3C/svg%3E');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-left: 8px;
+            cursor: not-allowed;
+            transition: background-image 0.3s ease;
+        }
+
+        .input-wrapper {
+            position: relative;
+
+            align-items: center;
+            cursor: default;
+        }
+
+        .id {
+            
+            cursor: not-allowed;
+            background-color: #d8d8d8 !important;
+            color: rgb(170, 170, 170);
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .id:hover {
+            border-color: #ca2b2b !important;
+            box-shadow: 0 0 8px #cea4a4;
+            background-color: #ff020260 !important;
+        }
+
+        .id:hover + .lock-icon {
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"%3E%3Cpath d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 8v2h2v-2a2 2 0 0 0-2-2 2 2 0 0 0-2 2zM9 8V6a3 3 0 1 1 6 0v2H9z"/%3E%3C/svg%3E');
+        }
+    </style>
 </head>
 
 <body>
@@ -20,17 +58,28 @@
 
 <div class="b">
     <div class="form-container">
-        <form id="formEPI" th:action="@{/epis}" th:object="${epi}" method="post" novalidate>
+        <form id="formEPI" action="/epis" method="post" novalidate>
             <h2>Editar EPI</h2>
 
-            <label for="id">ID:</label>
-            <input class="btn_id" type="text" id="id" th:field="*{id}" readonly>
+            <label>ID:</label>
+            <div class="input-wrapper" title="Campo bloqueado: não pode ser editado">
+                <input class="id" type="text" id="id" name="id" th:value="${epi.id}" readonly tabindex="-1">
+                <span class="lock-icon"></span>
+            </div>
 
             <label for="nome">Nome do EPI:</label>
-            <input type="text" id="nome" th:field="*{nome}" required> <div id="errorNome" class="error-message">Por favor, preencha o nome do EPI.</div>
+            <div class="input-wrapper">
+                <input type="text" id="nome" name="nome" required>
+                <span id="dotNome" class="error-dot"></span>
+            </div>
+            <div id="errorNome" class="error-message">Por favor, preencha o nome do EPI.</div>
 
             <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" th:field="*{quantidade}" required min="1" step="1"> <div id="errorQuantidade" class="error-message">Por favor, informe uma quantidade válida (maior que 0).</div>
+            <div class="input-wrapper">
+                <input type="number" id="quantidade" name="quantidade" required min="1" step="1">
+                <span id="dotQuantidade" class="error-dot"></span>
+            </div>
+            <div id="errorQuantidade" class="error-message">Por favor, informe uma quantidade válida (maior que 0).</div>
 
             <button type="submit">Editar</button>
         </form>
@@ -43,22 +92,28 @@
     const quantidade = document.getElementById('quantidade');
     const errorNome = document.getElementById('errorNome');
     const errorQuantidade = document.getElementById('errorQuantidade');
+    const dotNome = document.getElementById('dotNome');
+    const dotQuantidade = document.getElementById('dotQuantidade');
 
     form.addEventListener('submit', function(event) {
         let valid = true;
-        // ... (seu código JavaScript de validação permanece o mesmo) ...
+
         if (nome.value.trim() === '') {
             errorNome.style.display = 'block';
+            dotNome.style.display = 'inline-block';
             valid = false;
         } else {
             errorNome.style.display = 'none';
+            dotNome.style.display = 'none';
         }
 
         if (quantidade.value.trim() === '' || isNaN(quantidade.value) || Number(quantidade.value) < 1) {
             errorQuantidade.style.display = 'block';
+            dotQuantidade.style.display = 'inline-block';
             valid = false;
         } else {
             errorQuantidade.style.display = 'none';
+            dotQuantidade.style.display = 'none';
         }
 
         if (!valid) {

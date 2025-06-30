@@ -9,7 +9,7 @@ body {
 .login-btn {
     background-color: #4a6cf7;
     border: none;
-    color: white;
+    color: white !important;
     padding: 10px 25px;
     border-radius: 20px;
     cursor: pointer;
