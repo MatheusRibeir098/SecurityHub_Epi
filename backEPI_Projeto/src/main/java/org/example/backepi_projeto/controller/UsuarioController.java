@@ -104,5 +104,12 @@ public class UsuarioController {
             redirectAttributes.addFlashAttribute("mensagemErro", "Erro ao atualizar usuário: Usuário não encontrado!");
         }
         return "redirect:/usuarios/listar";
+
+
+    }
+    //-------------------------
+    @GetMapping("/gerenciar")
+    public String GerenciadorUsuario() {
+        return "/usuarios/gerenciar-usuario"; // AGORA CORRETO
     }
 }

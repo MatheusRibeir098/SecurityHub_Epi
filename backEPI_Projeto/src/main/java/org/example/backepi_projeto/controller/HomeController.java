@@ -27,15 +27,8 @@ public class HomeController {
         return "Sobre-SecurityHub"; // AGORA CORRETO
     }
 
-    @GetMapping("/gerenciador-usuario")
-    public String GerenciadorUsuario() {
-        return "/usuarios/gerenciar-usuario"; // AGORA CORRETO
-    }
 
-    @GetMapping("/gerenciador-epis")
-    public String GerenciadorEpis() {
-        return "/epis/gerenciador-epis"; // AGORA CORRETO
-    }
+
 // -----------------------------------------
 
     // ------------- PAGINAS LOGIN ----------------

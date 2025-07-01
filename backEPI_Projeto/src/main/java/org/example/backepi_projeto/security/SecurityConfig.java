@@ -35,7 +35,8 @@ public class SecurityConfig {
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/imagem/**", "/particles.js").permitAll() // Usando '/imagem' para coincidir com as pastas
                         .requestMatchers("/login", "/cadastro", "/").permitAll()
-                        .requestMatchers("/usuarios/cadastrar").permitAll() // Caminho correto para cadastro de usuário
+                        .requestMatchers("/usuarios/cadastrar").permitAll()
+                        .requestMatchers("/SecurityHub").permitAll() // Caminho correto para cadastro de usuário
                         .requestMatchers("/gerenciadores").hasRole("ADMIN")
                         .requestMatchers("/epis/**").hasRole("ADMIN")
                         .requestMatchers("/usuarios/**").hasRole("ADMIN") // Geral para gerenciar usuários, pode precisar de mais detalhes.

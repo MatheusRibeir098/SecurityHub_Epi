@@ -26,7 +26,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         if (isAdmin) {
             response.sendRedirect("/pagina-inicial"); // Redireciona para a tela do administrador
         } else {
-            response.sendRedirect("/pagina-inicial-usuario"); // Redireciona para a tela principal do usuário
+            // AJUSTADO: Redireciona para a nova página principal do usuário após o login
+            response.sendRedirect("/pagina-inicial-usuario");
         }
     }
 }

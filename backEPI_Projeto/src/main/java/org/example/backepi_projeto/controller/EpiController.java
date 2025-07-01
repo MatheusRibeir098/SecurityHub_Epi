@@ -76,4 +76,11 @@ public class EpiController {
         redirectAttributes.addFlashAttribute("mensagemSucesso", mensagem);
         return "redirect:/epis/listar"; // Redireciona para a lista após salvar/atualizar
     }
+
+    //------------------------------
+
+    @GetMapping("/gerenciar")
+    public String GerenciadorEpis() {
+        return "/epis/gerenciador-epis"; // AGORA CORRETO
+    }
 }

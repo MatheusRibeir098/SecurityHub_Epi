@@ -1,85 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:class="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de EPIs - SecurityHub EPI</title>
-
-  <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
-  <link rel="stylesheet" th:href="@{/css/lista.epi.css}">
-  <link rel="stylesheet" th:href="@{/css/gerenciaroes-usuario.css}">
-
+  <title>EPIs Disponíveis</title>
+  <link rel="stylesheet" th:href="@{/css/gerenciadores-usuario.css}">
 </head>
 <body>
+<div class="container">
+  <h1>EPIs Disponíveis para Empréstimo</h1>
 
-<nav class="navbar">
-  <img class="security" th:src="@{/imagem/security.png}" alt="">
-  <button class="login-btn">
-    <a th:href="@{tela-principal.html}"> <i class="fas fa-user"> Voltar</i> </a>
-  </button>
-</nav>
+  <div th:if="${mensagemSucesso}" class:alert success role="alert">
+    <p th:text="${mensagemSucesso}"></p>
+  </div>
 
-<div class="container-lista">
-  <h2>EPIs Disponíveis</h2>
+  <div th:if="${mensagemErro}" class:alert error role="alert">
+    <p th:text="${mensagemErro}"></p>
+  </div>
 
-  <table>
-    <thead>
+  <div th:if="${#lists.isEmpty(epis)}">
+    <p>Nenhum EPI disponível no momento.</p>
+  </div>
+  <div th:unless="${#lists.isEmpty(epis)}">
+    <table>
+      <thead>
       <tr>
         <th>ID</th>
         <th>Nome do EPI</th>
-        <th>Quantidade</th>
+        <th>Quantidade Disponível</th>
         <th>Ações</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr th:each="epi : ${epis}">
-        <td th:text="${epi.id}">1</td>
-        <td th:text="${epi.nome}">Capacete de Segurança</td>
-        <td th:text="${epi.quantidade}">100</td>
+        <td th:text="${epi.id}"></td>
+        <td th:text="${epi.nome}"></td>
+        <td th:text="${epi.quantidade}"></td>
         <td>
-          <button class="btn-emprestar" onclick="confirmarEmprestimo('[[${epi.id}]]', '[[${epi.nome}]]')">
-            Pegar emprestado
-          </button>
+          <form th:action="@{/gerenciadores-usuario/emprestar-epi/{id}(id=${epi.id})}" method="post">
+            <button type="submit" class:btn-emprestar th:if="${epi.quantidade > 0}">Pegar Emprestado</button>
+            <span th:unless="${epi.quantidade > 0}" class:text-danger>Indisponível</span>
+          </form>
         </td>
       </tr>
-      <tr th:if="${#lists.isEmpty(epis)}">
-        <td colspan="4">Nenhum EPI cadastrado.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Modal -->
-<div id="modalConfirmacao" class="modal">
-  <div class="modal-content">
-    <p id="textoModal"></p>
-    <div class="modal-buttons">
-      <form id="formEmprestar" th:action="@{/emprestimos/registrar}" method="post">
-        <input type="hidden" name="epiId" id="inputEpiId">
-        <button type="submit" id="confirmarSim">Sim</button>
-      </form>
-      <button type="button" id="confirmarNao">Cancelar</button>
-    </div>
+      </tbody>
+    </table>
   </div>
+
+  <a th:href="@{/gerenciadores-usuario/tela-principal-usuario}" class:back-button>Voltar</a>
 </div>
-
-<!-- Script -->
-<script>
-  function confirmarEmprestimo(id, nome) {
-    const modal = document.getElementById('modalConfirmacao');
-    const texto = document.getElementById('textoModal');
-    const input = document.getElementById('inputEpiId');
-
-    texto.innerText = `Tem certeza que deseja pegar "${nome}" emprestado?`;
-    input.value = id;
-    modal.style.display = 'flex';
-
-    document.getElementById('confirmarNao').onclick = function () {
-      modal.style.display = 'none';
-    };
-  }
-</script>
-
 </body>
 </html>
