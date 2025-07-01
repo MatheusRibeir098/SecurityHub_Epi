@@ -4,6 +4,22 @@ body {
     margin: 0;
     padding: 0;
 }
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(90, 3, 189, 0.692);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container h1 {
+  color: #000000;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
 
 /* Botão "Voltar" */
 .login-btn {
@@ -116,6 +132,48 @@ table td[colspan="5"] {
     gap: 10px;
     flex-wrap: wrap;
 }
+
+
+.botao-voltar-lista {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 7px 50px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 13px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  float:none; /* Alinha à direita */
+  cursor: pointer;
+}
+
+.botao-voltar-lista:hover {
+  background-color: #5e00f5;
+   box-shadow: 0 0 20px rgba(98, 0, 255, 0.678);
+  transform: translateY(-2px);
+}
+.botao-meus-emprestimos {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-meus-emprestimos:hover {
+  background-color: #5e00f5;
+  color: #ffffff; 
+  box-shadow: 0 0 20px rgba(98, 0, 255, 0.678);
+  transform: translateY(-2px);
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

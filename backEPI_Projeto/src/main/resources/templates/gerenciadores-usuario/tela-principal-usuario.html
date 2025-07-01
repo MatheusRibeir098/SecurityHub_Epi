@@ -26,7 +26,7 @@
 <nav class="navbar" >
   <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
   <button class="login-btn">
-    <a href="logout">Sair</a>
+    <a th:href="@{/login}">Sair</a>
   </button>
 </nav>
 
@@ -35,7 +35,7 @@
 <div class="container">
   <div class="gerenciadores-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
 
-    <div class="setavoltar fadeInUp" onclick="history.back()" title="Voltar">⮜</div>
+    <!-- <div class="setavoltar fadeInUp" onclick="history.back()" title="Voltar">⮜</div> -->
 
     <div class="logo-box fadeInUp">
       <img th:src="@{/imagem/security.png}" alt="SecurityHub Logo" class="logo-gerenciador" />

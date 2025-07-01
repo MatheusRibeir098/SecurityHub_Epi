@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login - SecurityHub EPI</title>
+    <title>SecurityHub</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" th:href="@{/imagem/favicon-32x32.png}">
+  <link rel="icon" type="image/png" sizes="16x16" th:href="@{/imagem/favicon-16x16.png}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/imagem/apple-touch-icon.png}">
+  <link rel="shortcut icon" th:href="@{/imagem/favicon.ico}" type="image/x-icon">
+  <link rel="manifest" th:href="@{/imagem/site.webmanifest}">
+
+    <link rel="stylesheet" th:href="@{css/animacao.css}">
     <link rel="stylesheet" th:href="@{css/login.css}">
     <link rel="stylesheet" th:href="@{css/pagina-inicial1.css}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     
     
     
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar fadeInLeft">
     <img class="security" th:src="@{imagem/security.png}" alt="">
     <button class="login-btn">
-        <a th:href="@{gerenciadores}"><i class="fas fa-user">Voltar</i></a>
+        <a th:href="@{gerenciadores}"><i class="fas fa-user flipInY">Voltar</i></a>
     </button>
 </nav>
 
-<div class="a">
-    <div class="login-container">
+<div class="a "data-aos="flip-left"
+         data-aos-easing="ease-out-cubic"
+         data-aos-duration="2000">
+
+    <div class="login-container fadeInRight">
         <h2>Login - SecurityHub EPI</h2>
 
         <div th:if="${param.error}" class="error-message">
@@ -29,23 +41,68 @@
 
         <form id="formLogin" th:action="@{/login}" method="post" novalidate>
             <div>
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" autofocus="autofocus" />
+                <label for="username">Email:</label>
+                <input class="fadeInRight" type="text" id="username" name="username" 
+                 autofocus="autofocus"
+                 required placeholder="Digite um email válido"/>
                 <div id="errorUsername" class="client-error-message">Por favor, preencha um email válido contendo '@'.</div>
             </div>
             <div>
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" />
+                <label class="fadeInRight" for="password">Senha:</label>
+                <input type="password" id="password" name="password" 
+                required placeholder="Informe sua senha" />
                 <div id="errorPassword" class="client-error-message">Por favor, preencha a senha.</div>
             </div>
             <div>
-                <button class="botao" type="submit">Entrar</button>
+                <button class="botao flipInY" type="submit">Entrar</button>
             </div>
         </form>
     </div>
 </div>
 
 <script>
+  const form = document.getElementById('formLogin');
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
+  const errorUsername = document.getElementById('errorUsername');
+  const errorPassword = document.getElementById('errorPassword');
+
+  if (username) {
+    username.addEventListener('input', e => {
+      e.target.value = e.target.value.toLowerCase();
+    });
+  }
+
+  form.addEventListener('submit', function(event) {
+    let valid = true;
+
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value.trim();
+
+    // Validação de e-mail com regex e lowercase
+    const emailValido = /^\S+@\S+\.\S+$/.test(usernameValue) && usernameValue === usernameValue.toLowerCase();
+    if (!emailValido) {
+      errorUsername.style.display = 'block';
+      valid = false;
+    } else {
+      errorUsername.style.display = 'none';
+    }
+
+    // Validação de senha com no mínimo 6 caracteres
+    if (passwordValue.length < 6) {
+      errorPassword.style.display = 'block';
+      valid = false;
+    } else {
+      errorPassword.style.display = 'none';
+    }
+
+    if (!valid) {
+      event.preventDefault();
+    }
+  });
+</script>
+
+<!-- <script>
     const form = document.getElementById('formLogin');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
@@ -57,7 +114,6 @@
 
         const usernameValue = username.value.trim();
 
-        // Verifica se username não está vazio e contém @
         if (usernameValue === '' || !usernameValue.includes('@')) {
             errorUsername.style.display = 'block';
             valid = false;
@@ -76,7 +132,10 @@
             event.preventDefault();
         }
     });
+</script> -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
 </script>
-
 </body>
 </html>

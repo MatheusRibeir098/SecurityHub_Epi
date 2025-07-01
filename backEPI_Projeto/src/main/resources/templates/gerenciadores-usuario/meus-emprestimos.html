@@ -2,12 +2,34 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Meus Empréstimos Pendentes</title>
-    <link rel="stylesheet" th:href="@{/css/gerenciadores-usuario.css}">
+    <title>SecurityHub</title>
+
+   <link rel="icon" type="image/png" sizes="32x32" th:href="@{/imagem/favicon-32x32.png}">
+  <link rel="icon" type="image/png" sizes="16x16" th:href="@{/imagem/favicon-16x16.png}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/imagem/apple-touch-icon.png}">
+  <link rel="shortcut icon" th:href="@{/imagem/favicon.ico}" type="image/x-icon">
+  <link rel="manifest" th:href="@{/imagem/site.webmanifest}">
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/animacao.css}">
+  <link rel="stylesheet" th:href="@{/css/pagina-inicial1.css}">
+  <link rel="stylesheet" th:href="@{/css/lista-usuario.css}">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
 </head>
-<body>
-<div class="container">
-    <h1>Meus Empréstimos Pendentes</h1>
+
+<body class="pagina-lista">
+
+  <nav class="navbar fadeInLeft">
+    <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
+    <button class="login-btn flipInY">
+      <a th:href="@{/gerenciadores-usuario/tela-principal-usuario}">Voltar</a>
+    </button>
+  </nav>
+
+
+<div class="container" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+    <h1 class="fadeInLeft">Meus Empréstimos Pendentes</h1>
 
     <div th:if="${mensagemSucesso}" class:alert success role="alert">
         <p th:text="${mensagemSucesso}"></p>
@@ -20,14 +42,14 @@
         <p>Você não possui EPIs emprestados pendentes no momento.</p>
     </div>
     <div th:unless="${#lists.isEmpty(emprestimos)}">
-        <table>
+        <table class="fadeInRight">
             <thead>
             <tr>
-                <th>ID do Empréstimo</th>
-                <th>Nome do EPI</th>
-                <th>Data de Retirada</th>
-                <th>Previsão de Devolução</th>
-                <th>Ações</th>
+                <th class="fadeInUp">ID do Empréstimo</th>
+                <th class="fadeInUp">Nome do EPI</th>
+                <th class="fadeInUp">Data de Retirada</th>
+                <th class="fadeInUp">Previsão de Devolução</th>
+                <th class="fadeInUp">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -38,7 +60,7 @@
                 <td th:text="${#temporals.format(emprestimo.dataPrevistaDevolucao, 'dd/MM/yyyy HH:mm')}"></td>
                 <td>
                     <form th:action="@{/gerenciadores-usuario/devolver-epi/{id}(id=${emprestimo.id})}" method="post">
-                        <button type="submit" class:btn-devolver>Devolver</button>
+                        <button type="submit" class="btn btn-small flipInY">Devolver</button>
                     </form>
                 </td>
             </tr>
@@ -46,7 +68,9 @@
         </table>
     </div>
 
-    <a th:href="@{/gerenciadores-usuario/tela-principal-usuario}" class:back-button>Voltar</a>
+    <a th:href="@{/gerenciadores-usuario/tela-principal-usuario}" class="botao-voltar-lista flipInY">Voltar</a>
 </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>

@@ -17,7 +17,7 @@
 @keyframes fadeInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-80px);
+    transform: translateX(-450px);
   }
    
   100% {
@@ -29,7 +29,7 @@
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    transform: translateX(60px);
+    transform: translateX(450px);
   }
   100% {
     opacity: 1;
@@ -39,14 +39,83 @@
 
 /* Classes que aplicam as animações */
 .fadeInUp {
-  animation: fadeInUp 1s ease forwards;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
 .fadeInLeft {
-  animation: fadeInLeft 1.2s ease forwards;
+  animation: fadeInLeft 1.8s ease forwards;
 }
 
 .fadeInRight {
-  animation: fadeInRight 1.3s ease forwards;
+  animation: fadeInRight 1.9s ease forwards;
 }
        
+
+@keyframes flipInY {
+  from {
+    transform: perspective(600px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(600px) rotate3d(0, 1, 0, -30deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(600px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(600px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(600px);
+  }
+}
+
+.flipInY {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-name: flipInY;
+  animation-duration: 1.6s;       /* mais suave */
+  animation-delay: 0.8s;            /* aparece depois */
+  animation-fill-mode: both;      /* mantém o estado final */
+  animation-timing-function: ease-out;
+  will-change: transform, opacity;
+}
+@keyframes flip {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+
+  40% {
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    animation-timing-function: ease-out;
+  }
+
+  50% {
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    animation-timing-function: ease-in;
+  }
+
+  80% {
+    transform: perspective(400px) scale3d(.95, .95, .95);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    transform: perspective(400px);
+    animation-timing-function: ease-in;
+  }
+}
+
+.animated.flip {
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+  animation-name: flip;
+}
