@@ -22,7 +22,44 @@
 </head>
 
 <body>
+<style>.navbar {
+    height: 80px;
+    background-color: #EEEEEE; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border-bottom: solid 5px rgba(59, 58, 58, 0.062);
+    z-index: 1000;
+    
+}
 
+
+.login-btn {
+    background-color: #4a6cf7;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #3f5be0;
+}
+.security {
+    width: 200px;
+    margin: 85%;
+    
+}
+</style>
 <nav class="navbar" >
   <img class="security" th:src="@{/imagem/security.png}" alt="Security Logo">
   <button class="login-btn">

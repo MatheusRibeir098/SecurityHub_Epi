@@ -46,7 +46,6 @@
 } 
 .gerenciadores-card {
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(75, 0, 251, 0.752) 0px 10px 30px;
     max-width: 400px;
     width: 100%;
     text-align: center;
