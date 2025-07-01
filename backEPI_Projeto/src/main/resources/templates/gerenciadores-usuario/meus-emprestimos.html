@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Empréstimos Pendentes</title>
+    <link rel="stylesheet" th:href="@{/css/gerenciadores-usuario.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Meus Empréstimos Pendentes</h1>
+
+    <div th:if="${mensagemSucesso}" class:alert success role="alert">
+        <p th:text="${mensagemSucesso}"></p>
+    </div>
+    <div th:if="${mensagemErro}" class:alert error role="alert">
+        <p th:text="${mensagemErro}"></p>
+    </div>
+
+    <div th:if="${#lists.isEmpty(emprestimos)}">
+        <p>Você não possui EPIs emprestados pendentes no momento.</p>
+    </div>
+    <div th:unless="${#lists.isEmpty(emprestimos)}">
+        <table>
+            <thead>
+            <tr>
+                <th>ID do Empréstimo</th>
+                <th>Nome do EPI</th>
+                <th>Data de Retirada</th>
+                <th>Previsão de Devolução</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="emprestimo : ${emprestimos}">
+                <td th:text="${emprestimo.id}"></td>
+                <td th:text="${emprestimo.epi.nome}"></td>
+                <td th:text="${#temporals.format(emprestimo.dataRetirada, 'dd/MM/yyyy HH:mm')}"></td>
+                <td th:text="${#temporals.format(emprestimo.dataPrevistaDevolucao, 'dd/MM/yyyy HH:mm')}"></td>
+                <td>
+                    <form th:action="@{/gerenciadores-usuario/devolver-epi/{id}(id=${emprestimo.id})}" method="post">
+                        <button type="submit" class:btn-devolver>Devolver</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a th:href="@{/gerenciadores-usuario/tela-principal-usuario}" class:back-button>Voltar</a>
+</div>
+</body>
+</html>
