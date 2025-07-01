@@ -21,7 +21,7 @@
 <nav class="navbar fadeInLeft">
     <img class="security" th:src="@{imagem/security.png}" alt="">
     <button class="login-btn">
-        <a th:href="@{gerenciadores}"><i class="fas fa-user flipInY">Voltar</i></a>
+        <a th:href="@{/SecurityHub}"> <i class="fas fa-user flipInY">Voltar</i> </a>
     </button>
 </nav>
 
@@ -60,6 +60,7 @@
     </div>
 </div>
 
+<!--
 <script>
   const form = document.getElementById('formLogin');
   const username = document.getElementById('username');
@@ -102,7 +103,9 @@
   });
 </script>
 
-<!-- <script>
+-->
+
+ <script>
     const form = document.getElementById('formLogin');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
@@ -132,7 +135,7 @@
             event.preventDefault();
         }
     });
-</script> -->
+</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
