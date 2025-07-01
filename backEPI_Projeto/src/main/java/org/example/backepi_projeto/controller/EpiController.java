@@ -3,6 +3,7 @@ package org.example.backepi_projeto.controller;
 import org.example.backepi_projeto.model.EPI;
 import org.example.backepi_projeto.repository.EpiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException; // Importar DataIntegrityViolationException
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,10 +34,19 @@ public class EpiController {
     }
 
     @PostMapping("/excluir/{id}")
-    public String excluirEpi(@PathVariable Long id) {
-        Optional<EPI> epiOptional = repository.findById(id);
-        if (epiOptional.isPresent()) {
-            repository.delete(epiOptional.get());
+    public String excluirEpi(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            Optional<EPI> epiOptional = repository.findById(id);
+            if (epiOptional.isPresent()) {
+                repository.delete(epiOptional.get());
+                redirectAttributes.addFlashAttribute("mensagemSucesso", "EPI excluído com sucesso!");
+            } else {
+                redirectAttributes.addFlashAttribute("mensagemErro", "EPI não encontrado para exclusão.");
+            }
+        } catch (DataIntegrityViolationException e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Não é possível excluir este EPI pois ele está vinculado a empréstimos ou devoluções.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Ocorreu um erro ao excluir o EPI: " + e.getMessage());
         }
         return "redirect:/epis/listar";
     }

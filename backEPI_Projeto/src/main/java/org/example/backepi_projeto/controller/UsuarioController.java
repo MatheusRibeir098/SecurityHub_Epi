@@ -3,6 +3,7 @@ package org.example.backepi_projeto.controller;
 import org.example.backepi_projeto.model.User;
 import org.example.backepi_projeto.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException; // Importar DataIntegrityViolationException
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,10 +61,14 @@ public class UsuarioController {
 
     @PostMapping("/excluir/{id}")
     public String excluirUsuario(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        // Lembre-se que se houver dependências de chave estrangeira (como a tabela 'emprestimo'),
-        // você precisará lidar com elas antes de excluir o usuário.
-        userRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("mensagemSucesso", "Usuário excluído com sucesso!");
+        try {
+            userRepository.deleteById(id);
+            redirectAttributes.addFlashAttribute("mensagemSucesso", "Usuário excluído com sucesso!");
+        } catch (DataIntegrityViolationException e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Não é possível excluir este usuário pois ele está vinculado a empréstimos.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Ocorreu um erro ao excluir o usuário: " + e.getMessage());
+        }
         return "redirect:/usuarios/listar";
     }
 

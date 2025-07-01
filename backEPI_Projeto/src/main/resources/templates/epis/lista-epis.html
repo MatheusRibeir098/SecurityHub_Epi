@@ -28,6 +28,8 @@
         </button>
     </nav>
 
+
+
 <div class="container-lista">
     <h2>EPIs Cadastrados</h2>
 
@@ -66,7 +68,17 @@
         </tr>
         </tbody>
     </table>
+
+
+    <div  th:if="${mensagemSucesso}" class="alert alert-success" role="alert">
+        <p th:text="${mensagemSucesso}"></p>
+    </div>
+    <div th:if="${mensagemErro}" class="alert alert-danger" role="alert">
+        <p th:text="${mensagemErro}"></p>
+    </div>
 </div>
+
+
 
 </body>
 </html>
