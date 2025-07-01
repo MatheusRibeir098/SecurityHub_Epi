@@ -1,60 +1,54 @@
 # 🚀 SecurityHub EPI
 
-## Gerenciamento de Equipamentos de Proteção Individual 🛡️
+## Sistema Completo de Gerenciamento de Equipamentos de Proteção Individual 🛡️
 
-Bem-vindo ao repositório do projeto **SecurityHub EPI**! Este sistema visa simplificar o gerenciamento de Equipamentos de Proteção Individual (EPIs) em um ambiente corporativo ou institucional, garantindo que os usuários tenham acesso facilitado aos equipamentos necessários e que o controle de estoque seja eficiente.
+Bem-vindo ao repositório do projeto **SecurityHub EPI**! Este sistema foi desenvolvido para simplificar e otimizar o gerenciamento de Equipamentos de Proteção Individual (EPIs) em ambientes corporativos ou institucionais. Ele garante que os usuários tenham acesso facilitado aos equipamentos necessários, ao mesmo tempo em que oferece um controle de estoque eficiente e um gerenciamento robusto de usuários.
 
 ---
 
 ## Visão Geral do Projeto 💡
 
-O **SecurityHub EPI** é uma aplicação web robusta projetada para gerenciar o ciclo de vida dos EPIs.
+O **SecurityHub EPI** é uma aplicação web completa, projetada para gerenciar o ciclo de vida dos EPIs de forma integrada.
 
-**Objetivos Principais:**
+**Funcionalidades Principais:**
 
-* **Para Administradores:** Cadastrar novos EPIs ➕, gerenciar o estoque existente 📦 e controlar os usuários do sistema 👥.
-* **Para Usuários:** Visualizar EPIs disponíveis 👀, solicitar empréstimo de equipamentos 🤝 e registrar a devolução ↩️.
+* **Para Administradores:**
+    * **Cadastro de EPIs:** Adicionar novos EPIs ao sistema.
+    * **Listagem e Edição de EPIs:** Visualizar todos os EPIs cadastrados em uma tabela, com opções para editar suas informações (nome e quantidade).
+    * **Exclusão de EPIs:** Remover EPIs da lista.
+    * **Gerenciamento de Usuários:** Cadastrar, listar, editar e excluir usuários do sistema, incluindo a definição de seus perfis (ADMIN/USUARIO).
+* **Para Usuários (Funcionalidades de Usuário Autenticado):**
+    * **Visualização de EPIs Disponíveis:** Acessar uma lista de EPIs com quantidade disponível para empréstimo.
+    * **Solicitação de Empréstimo:** Realizar o empréstimo de EPIs disponíveis, que automaticamente atualiza a quantidade em estoque.
+    * **Visualização de Empréstimos Pendentes:** Acompanhar a lista de EPIs emprestados que ainda não foram devolvidos.
+    * **Registro de Devolução:** Registrar a devolução de um EPI, incrementando novamente a quantidade em estoque.
+    * **Autenticação:** Sistema de login e logout robusto com Spring Security.
 
 ---
 
 ## Tecnologias Utilizadas 🛠️
 
-Este projeto foi construído utilizando as seguintes tecnologias:
+Este projeto foi construído utilizando as seguintes tecnologias, garantindo uma arquitetura moderna e escalável:
 
-* **Backend:** Spring Boot (Java) ☕
-* **Frontend:** HTML 🌐, CSS 🎨, JavaScript (com Thymeleaf para renderização de templates) ✨
-* **Banco de Dados:** MySQL (manipulado via SQL Workbench) 🗄️
+* **Backend:** Spring Boot (Java 17)
+* **Segurança:** Spring Security (com autenticação via banco de dados e senhas BCrypt)
+* **Persistência:** Spring Data JPA
+* **Banco de Dados:** MySQL (com dump de teste fornecido)
+* **Frontend:** HTML, CSS, JavaScript (com Thymeleaf para renderização de templates dinâmicos)
+* **Ferramentas de Build:** Maven
 
 ---
 
-## Estado Atual do Desenvolvimento 🚧
+## Estado do Projeto ✅
 
-Atualmente, estamos focados no desenvolvimento das funcionalidades voltadas para o **administrador** ⚙️. Isso inclui:
-
-* **Estrutura da Aplicação:** A base da aplicação Spring Boot está configurada, com a estrutura de pastas para templates Thymeleaf e recursos estáticos devidamente organizada.
-* **Segurança (Spring Security):** Implementação funcional de login 🔐 e logout 🚪. A maioria das páginas exige autenticação, e a autenticação de usuários é feita diretamente do banco de dados MySQL com senhas BCrypt.
-* **Gerenciamento de EPIs:**
-    * Entidade `EPI.java` e `EpiRepository` definidos.
-    * **Funcionalidades de CRUD (Create, Read, Update, Delete) em andamento para EPIs:**
-        * Formulário de cadastro de EPIs (`/epis/cadastrar-epis`) 📝.
-        * Processamento do cadastro de EPIs no backend.
-        * **Página de Listagem de EPIs (`/epis/listar`):** Exibe todos os EPIs cadastrados em uma tabela 📊.
-        * **Funcionalidade de Exclusão de EPIs:** Permite que administradores removam EPIs da lista 🗑️.
-
-**Próximos Passos:**
-
-Após consolidarmos as funcionalidades do administrador, o foco será expandido para as funcionalidades do **usuário** 🧑‍💻, incluindo:
-
-* Visualização de EPIs disponíveis para empréstimo.
-* Registro de empréstimos de EPIs.
-* Registro de devoluções de EPIs.
+O projeto **SecurityHub EPI** está **FINALIZADO**. Todas as funcionalidades planejadas para o gerenciamento de EPIs e usuários, tanto para o perfil de administrador quanto para o de usuário, foram implementadas e testadas. A aplicação oferece uma solução completa para o controle de equipamentos de proteção individual.
 
 ---
 
 ## Colaboradores 👋
 
-Este projeto está sendo desenvolvido com dedicação por:
+Este projeto foi desenvolvido com dedicação por:
 
-* **Matheus Ribeiro:** Foco principal no desenvolvimento do **Backend** da aplicação 💻.
-* **Eduardo:** Foco principal no desenvolvimento do **Frontend** (HTML, CSS, JavaScript) 🎨.
-* **Paulo:** Foco principal no desenvolvimento do **Frontend** (HTML, CSS, JavaScript) 🌐.
+* **Matheus Ribeiro:** Desenvolvimento principal do **Backend** da aplicação.
+* **Eduardo:** Desenvolvimento principal do **Frontend** (HTML, CSS, JavaScript).
+* **Paulo:** Desenvolvimento principal do **Frontend** (HTML, CSS, JavaScript).
