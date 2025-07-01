@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<!--
+
 <script>
   const form = document.getElementById('formLogin');
   const username = document.getElementById('username');
@@ -103,39 +103,8 @@
   });
 </script>
 
--->
 
- <script>
-    const form = document.getElementById('formLogin');
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-    const errorUsername = document.getElementById('errorUsername');
-    const errorPassword = document.getElementById('errorPassword');
 
-    form.addEventListener('submit', function(event) {
-        let valid = true;
-
-        const usernameValue = username.value.trim();
-
-        if (usernameValue === '' || !usernameValue.includes('@')) {
-            errorUsername.style.display = 'block';
-            valid = false;
-        } else {
-            errorUsername.style.display = 'none';
-        }
-
-        if (password.value.trim() === '') {
-            errorPassword.style.display = 'block';
-            valid = false;
-        } else {
-            errorPassword.style.display = 'none';
-        }
-
-        if (!valid) {
-            event.preventDefault();
-        }
-    });
-</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
